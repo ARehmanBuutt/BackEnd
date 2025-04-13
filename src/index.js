@@ -25,7 +25,7 @@
 // })()
 
 
-// 2nd
+// 2nd approach Connect DB in another file and Call here To make code clean
 
 
 // require('dotenv').config({path: './env'})
