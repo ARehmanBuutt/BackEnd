@@ -1,5 +1,4 @@
 import { v2 as cloudinary } from 'cloudinary';
-import { log } from 'console';
 import fs from "fs"
 
     cloudinary.config({ 
@@ -19,12 +18,22 @@ import fs from "fs"
             })
 
             // File has been uploaded sucessfully
-            console.log("File is uploaded on Cloudinary ", response.url)
+            // console.log("File is uploaded on Cloudinary ", response.url)
+            fs.unlinkSync(localFilePath)
             return response;
 
-        } catch (error) {
+        } 
+        catch (error) {
             fs.unlinkSync(localFilePath) // Remove the locally save temp file if upload operation failed
             return null;
+
+        // catch (error) {
+        //     console.error("Cloudinary upload error:", error); // 👈 Add this
+        //     if (fs.existsSync(localFilePath)) {
+        //         fs.unlinkSync(localFilePath);
+        //     }
+        //     return null;
+
         }
     }
 
