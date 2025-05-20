@@ -1,16 +1,16 @@
-const aysncHandler =  (requestHandler) => {
+const asyncHandler =  (requestHandler) => {
     return (req, res, next) => {
         Promise.resolve(requestHandler(req, res, next)).
         catch((err) => next(err))
     }
 }
 
-export { aysncHandler }
+export { asyncHandler }
 
 
 // Database communication wrapper with Try Catch
 
-// const aysncHandler = (fn) => async (req, res, next) => {
+// const asyncHandler = (fn) => async (req, res, next) => {
 //     try {
 //         await fn(req, res, next)
 //     } catch (error) {
@@ -21,4 +21,4 @@ export { aysncHandler }
 //     }
 // }
 
-// export { aysncHandler }
+// export { asyncHandler }
